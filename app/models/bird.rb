@@ -12,10 +12,10 @@ class Bird
   validate :continents_validation
 
   def generate_default_values
-    if self.visible == nil
+    if self.visible.nil?
       self.visible=false
     end
-    if self.added == nil
+    if self.added.nil?
       self.added=Time.now.getutc.to_date.strftime('%Y-%m-%d')
     end
     true
