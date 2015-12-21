@@ -8,7 +8,6 @@ class BirdsController < ApplicationController
   end
 
   def create
-    puts "started create=============="
     begin
       continents = []
       if not params[:continents].blank?
@@ -21,9 +20,6 @@ class BirdsController < ApplicationController
                            :continents => continents)
       render :json => Rabl.render(@bird, 'birds/create', :view_path => 'app/views'), :status => 201
     rescue Exception => e
-      puts "execption thrown"
-      puts e
-      puts e.message
       render(:status => 400,
              :json => {:error => {:error_code => 400, :error_message => "#{e.message}"}})
       return
